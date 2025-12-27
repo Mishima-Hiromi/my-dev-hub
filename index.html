@@ -5,12 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyPage</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <h1 id="title">Hello, World!</h1>
-    <p>クリック回数：<span id="count-num">0</span>回</p>
-    <p>自己紹介</p>
-    <button id="color-btn">色変更</button>
-    <script src="script.js"></script>
+    <!-- ヘッダー -->
+    <header class="main-header">
+      <div class="header-container">
+        <div class="logo">
+          <a href="index.html">Hiro <span>DevHub</span></a>
+        </div>
+
+        <nav class="header-nav">
+          <a href="index.html">Home</a>
+          <a href="playground.html">Playground</a>
+          <a href="#" class="btn-contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- タイトル -->
+    <section class="hero">
+      <div class="here-content">
+        <h1 class="hero-title">CREATIVE BASE<span>.</span></h1>
+        <p class="hero-subtext">自主製作したものを貯めておきたい。</p>
+      </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section class="projects">
+      <h2 class="section-label">Works</h2>
+      <div class="projects-grid">
+        <!-- 作品1 -->
+        <div class="project-card">
+          <a
+            href="https://my-dev-hub.vercel.app/"
+            class="project-card"
+            target="_blank"
+          ></a>
+          <div class="project-image">
+            <img
+              src="portfolio-site.png"
+              alt="My first site"
+              class="project-img"
+            />
+          </div>
+          <div class="project-info">
+            <span class="project-number">01</span>
+            <h3 class="project-title">THIS PORTFOLIO SITE</h3>
+            <p class="project-category">
+              My first Design & Development Project/ 2025
+            </p>
+          </div>
+        </div>
+        <!-- 作品2 -->
+        <div class="project-card">
+          <a href="#" class="project-card" target="_blank"></a>
+          <div class="project-image">
+            UNDER CONSTRUCTION
+            <!-- <img src="#" alt="UNDER CONSTRUCTION" class="project-img" /> -->
+          </div>
+          <div class="project-info">
+            <span class="project-number">02</span>
+            <h3 class="project-title">Next work</h3>
+            <p class="project-category">coming soon...</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

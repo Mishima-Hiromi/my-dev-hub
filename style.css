@@ -1,8 +1,242 @@
+/* --- 1. 変数（色の定義） --- */
+:root {
+  --bg-main: #ffffff;
+  --text-main: #111827;
+  --text-sub: #6b7280;
+  --accent: #ff4500; /* 赤オレンジ */
+}
+
+/* --- 2. リセット（ブラウザ特有の余白を消す） --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 余白を含めたサイズ計算にする（重要！） */
+}
+
 body {
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* リンクの基本設定 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ヘッダー全体（背景や固定の設定） */
+.main-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1000;
+}
+
+/* 中身を横並びにして中央に寄せる箱 */
+.header-container {
+  display: flex; /* 横並びにする */
+  justify-content: space-between; /* ロゴは左、ナビは右へ！ */
+  align-items: center; /* 上下の中央を揃える */
+
+  max-width: 100%; /* 広がりすぎ防止 */
+  margin: 0 auto; /* コンテナ自体を画面中央へ */
+  padding: 20px 40px; /* 内側の余白 */
+}
+
+/* ナビゲーションのリンク同士を横に並べる */
+.header-nav {
+  display: flex;
+  gap: 30px; /* リンク間の隙間 */
+  align-items: center;
+}
+
+.header-nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  transition: 0.3s;
+}
+
+.header-nav a:hover {
+  color: var(--accent);
+}
+
+.logo a {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+/* DevHub の部分だけ色を変える（<span>を使っているのが活きます！） */
+.logo span {
+  color: var(--accent); /* あの赤オレンジ */
+  margin-left: 2px;
+}
+
+/* Contactボタンだけアクセント（赤オレンジ）にする */
+.btn-contact {
+  color: var(--accent) !important; /* 文字をオレンジに */
+  border: 1px solid var(--accent); /* 線を引くならここだけ */
+  padding: 8px 20px;
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+.btn-contact:hover {
+  background-color: var(--accent);
+  color: white !important;
+}
+
+/* ヒーローエリア全体の高さと配置 */
+.hero {
+  height: 35vh; /* 画面の高さの80%を使う贅沢な余白 */
+  display: flex;
+  align-items: flex-start; /* 上寄せ */
+  justify-content: center; /* 左右中央 */
+  text-align: center;
+  padding-top: 10vh; /* 画面の高さの15%分、上から空ける*/
+}
+
+/* 巨大タイトルのデザイン */
+.hero-title {
+  /* 非常に大きく、太い文字 */
+  font-size: clamp(3rem, 10vw, 8rem); /* 画面幅に合わせて自動でサイズ調整 */
+  font-weight: 900;
+  line-height: 0.9; /* 行間をわざと詰める */
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+  color: var(--text-main);
+  text-transform: uppercase; /* 強制的に大文字 */
+}
+
+/* オレンジのドット */
+.hero-title span {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(255, 69, 0, 0.5), 0 0 20px rgba(255, 69, 0, 0.3);
+}
+
+/* 補足テキスト */
+.hero-subtext {
+  font-size: 1.1rem;
+  color: var(--text-sub);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* 作品集 */
+.projects {
+  padding: 20px 80px 200px 80px;
+  background-color: #000; /* 作品エリアだけ黒 */
+}
+
+.projects h2 {
+  color: #ffffff;
+  margin: -20px 0 30px -50px;
+  font-size: 3.5rem;
+  font-weight: 900;
+}
+
+/* 複数並べるためのグリッド設定 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 横に並べる */
+  gap: 10px 40px; /* 縦と横の隙間 */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-card {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.project-number {
+  color: var(--accent); /* 赤オレンジ */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.project-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  /* 行の高さ（文字の座布団）を最小限にする */
+  line-height: 1;
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.project-category {
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* 作品画像 */
+.project-image {
+  width: 100%;
+  height: 500px;
+  background: #111; /* 深い黒 */
+  border: 1px solid #222;
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  font-family: sans-serif;
+  overflow: hidden;
+  color: var(--text-sub);
+  transition: filter 0.5s ease;
+}
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 全体が見えるように */
+}
+
+.project-card:hover {
+  transform: scale(0.98); /* ホバーした時に少し沈む演出 */
+}
+
+/* カード全体をリンクにするための調整 */
+a.project-card {
+  text-decoration: none; /* 下線を消す */
+  color: inherit; /* 文字色を親要素から引き継ぐ */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 画面幅が 768px 以下の設定（スマホ・タブレット） */
+@media (max-width: 768px) {
+  .projects {
+    /* 左右の余白を 80px から 20px 程度に減らして画面を広く使う */
+    padding: 40px 20px 100px 20px !important;
+  }
+
+  .projects h2 {
+    /* スマホでは文字サイズを少し落とす */
+    font-size: 32px;
+    margin-left: 0; /* 左端に寄せる */
+  }
+
+  .projects-grid {
+    /* 縦に並べる（1カラム） */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* 作品ごとの上下の間隔 */
+  }
+
+  .project-image {
+    /* スマホでは高さを少し抑えるとスクロールしやすい */
+    height: 300px;
+  }
+
+  .project-title {
+    /* スマホ向けのタイトルサイズ */
+    font-size: 1.8rem;
+  }
 }
