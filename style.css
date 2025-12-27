@@ -232,7 +232,7 @@ a.project-card {
 
   .project-image {
     /* スマホでは高さを少し抑えるとスクロールしやすい */
-    height: 300px;
+    height: 100px;
   }
 
   .project-title {
