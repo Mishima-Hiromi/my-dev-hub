@@ -181,7 +181,7 @@ a {
 /* 作品画像 */
 .project-image {
   width: 100%;
-  height: 100%;
+  height: 400px;
   background: #111; /* 深い黒 */
   border: 1px solid #222;
   display: flex;
